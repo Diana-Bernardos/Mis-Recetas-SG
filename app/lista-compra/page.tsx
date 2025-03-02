@@ -128,7 +128,7 @@ export default function ListaCompraPage() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-6 flex items-center gap-2">
+      <h1 className="text-3xl font-bold mb-6 flex items-center gap-2 text-gray-700">
         <ShoppingBag className="h-8 w-8" />
         Lista de Compra
       </h1>
@@ -143,7 +143,7 @@ export default function ListaCompraPage() {
             value={nuevoItem.nombre}
             onChange={(e) => setNuevoItem({ ...nuevoItem, nombre: e.target.value })}
             onKeyPress={handleKeyPress}
-            className="flex-grow px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary focus:border-primary"
+            className="flex-grow px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary focus:border-primary text-gray-600"
           />
           <input
             type="text"
@@ -151,7 +151,7 @@ export default function ListaCompraPage() {
             value={nuevoItem.cantidad}
             onChange={(e) => setNuevoItem({ ...nuevoItem, cantidad: e.target.value })}
             onKeyPress={handleKeyPress}
-            className="w-full md:w-32 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary focus:border-primary"
+            className="w-full md:w-32 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary focus:border-primary text-gray-600"
           />
           <button onClick={agregarItem} className="btn-primary flex items-center justify-center gap-2">
             <Plus className="h-4 w-4" />

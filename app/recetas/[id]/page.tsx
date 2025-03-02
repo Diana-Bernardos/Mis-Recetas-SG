@@ -152,8 +152,8 @@ export default function RecetaDetalle({ params }: { params: { id: string } }) {
         />
 
         <div className="p-6">
-          <h1 className="text-3xl font-bold mb-2">{receta.title}</h1>
-          <p className="text-lg mb-6">{receta.description}</p>
+          <h1 className="text-3xl font-bold mb-2 text-gray-800">{receta.title}</h1>
+          <p className="text-lg mb-6 text-gray-700">{receta.description}</p>
 
           <div className="flex flex-wrap gap-4 mb-6">
             <div className="flex items-center gap-2 bg-muted px-3 py-1 rounded-full">

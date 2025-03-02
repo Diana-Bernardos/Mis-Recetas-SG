@@ -60,16 +60,16 @@ export default function RecetasPage() {
 
       {/* Toggle para cambiar entre tus recetas y la búsqueda en API */}
       <div className="mb-6 flex justify-center">
-        <div className="bg-gray-100 p-1 rounded-lg inline-flex">
+        <div className="bg-balck-100 p-1 rounded-lg inline-flex">
           <button
             onClick={() => setMostrarAPISponacular(false)}
-            className={`px-4 py-2 rounded-md ${!mostrarAPISponacular ? 'bg-white shadow-sm' : ''}`}
+            className={`px-4 py-2 rounded-md ${!mostrarAPISponacular ? 'bg-black shadow-sm' : ''}`}
           >
             Mis Recetas
           </button>
           <button
             onClick={() => setMostrarAPISponacular(true)}
-            className={`px-4 py-2 rounded-md ${mostrarAPISponacular ? 'bg-white shadow-sm' : ''}`}
+            className={`px-4 py-2 rounded-md ${mostrarAPISponacular ? 'bg-black shadow-sm' : ''}`}
           >
             Buscar Recetas Online
           </button>
@@ -92,7 +92,7 @@ export default function RecetasPage() {
                 placeholder="Buscar recetas sin gluten..."
                 value={busqueda}
                 onChange={(e) => setBusqueda(e.target.value)}
-                className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:ring-primary focus:border-primary"
+                className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:ring-primary focus:border-primary text-gray-600"
               />
             </div>
           </div>

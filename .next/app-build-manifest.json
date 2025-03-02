@@ -1,5 +1,10 @@
 {
   "pages": {
+    "/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/page.js"
+    ],
     "/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -11,15 +16,20 @@
       "static/chunks/main-app.js",
       "static/chunks/app/recetas/page.js"
     ],
-    "/page": [
+    "/asistente/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/page.js"
+      "static/chunks/app/asistente/page.js"
     ],
-    "/not-found": [
+    "/lista-compra/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/not-found.js"
+      "static/chunks/app/lista-compra/page.js"
+    ],
+    "/crear-receta/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/crear-receta/page.js"
     ]
   }
 }

@@ -131,14 +131,14 @@ export default function CrearRecetaPage() {
       <form onSubmit={handleSubmit} className="bg-secondary rounded-lg shadow-md p-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div>
-            <label className="block text-sm font-medium mb-2">Título de la receta sin gluten</label>
+            <label className="block text-sm font-medium">Título de la receta sin gluten</label>
             <input
               type="text"
               name="titulo"
               value={receta.titulo}
               onChange={handleChange}
               required
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary focus:border-primary"
+              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary focus:border-primary text-gray-600"
               placeholder="Ej: Pasta de arroz con verduras"
             />
           </div>
@@ -151,7 +151,7 @@ export default function CrearRecetaPage() {
                 name="imagen"
                 value={receta.imagen}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary focus:border-primary"
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary focus:border-primary text-gray-600"
                 placeholder="URL de la imagen"
               />
               <button type="button" className="btn-accent flex items-center gap-2">
@@ -168,7 +168,7 @@ export default function CrearRecetaPage() {
               value={receta.descripcion}
               onChange={handleChange}
               rows={3}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary focus:border-primary"
+              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary focus:border-primary text-gray-600"
               placeholder="Breve descripción de la receta sin gluten"
             ></textarea>
           </div>
@@ -180,7 +180,7 @@ export default function CrearRecetaPage() {
               name="tiempo"
               value={receta.tiempo}
               onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary focus:border-primary"
+              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary focus:border-primary text-gray-600"
               placeholder="Ej: 30 min"
             />
           </div>
@@ -191,7 +191,7 @@ export default function CrearRecetaPage() {
               name="dificultad"
               value={receta.dificultad}
               onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary focus:border-primary"
+              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary focus:border-primary text-gray-600"
             >
               <option value="Fácil">Fácil</option>
               <option value="Media">Media</option>
@@ -207,7 +207,7 @@ export default function CrearRecetaPage() {
               value={receta.porciones}
               onChange={handleChange}
               min="1"
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary focus:border-primary"
+              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary focus:border-primary text-gray-600"
             />
           </div>
         </div>
@@ -215,7 +215,7 @@ export default function CrearRecetaPage() {
         <div className="mb-6">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-xl font-bold">Ingredientes sin gluten</h2>
-            <button type="button" onClick={agregarIngrediente} className="btn-primary flex items-center gap-2">
+            <button type="button" onClick={agregarIngrediente} className="btn-primary flex items-center gap-2 text-gray-600">
               <Plus className="h-4 w-4" />
               Añadir ingrediente
             </button>
@@ -227,14 +227,14 @@ export default function CrearRecetaPage() {
                 type="text"
                 value={ingrediente.nombre}
                 onChange={(e) => handleIngredienteChange(index, "nombre", e.target.value)}
-                className="flex-grow px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary focus:border-primary"
+                className="flex-grow px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary focus:border-primary text-gray-600"
                 placeholder="Nombre del ingrediente sin gluten"
               />
               <input
                 type="text"
                 value={ingrediente.cantidad}
                 onChange={(e) => handleIngredienteChange(index, "cantidad", e.target.value)}
-                className="w-32 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary focus:border-primary"
+                className="w-32 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary focus:border-primary text-gray-600"
                 placeholder="Cantidad"
               />
               {receta.ingredientes.length > 1 && (
@@ -261,14 +261,14 @@ export default function CrearRecetaPage() {
 
           {receta.pasos.map((paso, index) => (
             <div key={index} className="flex items-start gap-4 mb-4">
-              <div className="flex-shrink-0 w-8 h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center font-bold mt-2">
+              <div className="flex-shrink-0 w-8 h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center font-bold mt-2 text-gray-600">
                 {index + 1}
               </div>
               <textarea
                 value={paso}
                 onChange={(e) => handlePasoChange(index, e.target.value)}
                 rows={2}
-                className="flex-grow px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary focus:border-primary"
+                className="flex-grow px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary focus:border-primary text-gray-600"
                 placeholder={`Paso ${index + 1}`}
               ></textarea>
               {receta.pasos.length > 1 && (
