@@ -1,0 +1,7 @@
+{
+  "/not-found": "app/not-found.js",
+  "/api/recipes/route": "app/api/recipes/route.js",
+  "/recetas/page": "app/recetas/page.js",
+  "/page": "app/page.js",
+  "/api/gluten-free/route": "app/api/gluten-free/route.js"
+}
