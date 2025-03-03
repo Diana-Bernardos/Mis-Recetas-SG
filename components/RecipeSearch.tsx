@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Loader2 } from "lucide-react";
+import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { Search, Loader2 } from "lucide-react";
 
 interface Recipe {
   id: number;
@@ -14,6 +12,7 @@ interface Recipe {
 }
 
 export default function RecipeSearch() {
+  const router = useRouter();
   const [query, setQuery] = useState('');
   const [recipes, setRecipes] = useState<Recipe[]>([]);
   const [loading, setLoading] = useState(false);
@@ -57,76 +56,91 @@ export default function RecipeSearch() {
   };
 
   return (
-    <div className="container mx-auto py-8">
-      <div className="max-w-md mx-auto mb-10">
-        <h1 className="text-2xl font-bold mb-6 text-center">Buscador de Recetas Sin Gluten</h1>
-        <form onSubmit={handleSearch} className="flex gap-2">
-          <Input
-            type="text"
-            placeholder="Buscar recetas (ej: pasta, pizza, tacos...)"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            className="flex-1"
-          />
-          <Button type="submit" disabled={loading}>
-            {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : 'Buscar'}
-          </Button>
-        </form>
+    <div className="container mx-auto py-4">
+      <div className="mb-8">
+        <div className="relative max-w-md mx-auto md:mx-0">
+          <form onSubmit={handleSearch} className="flex items-center">
+            <div className="relative flex-grow">
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <Search className="h-5 w-5 text-gray-400" />
+              </div>
+              <input
+                type="text"
+                placeholder="Buscar recetas sin gluten..."
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:ring-primary focus:border-primary"
+              />
+            </div>
+            <button 
+              type="submit" 
+              disabled={loading}
+              className="ml-2 btn-primary"
+            >
+              {loading ? (
+                <span className="flex items-center justify-center">
+                  <Loader2 className="h-4 w-4 animate-spin mr-2" />
+                  Buscando...
+                </span>
+              ) : 'Buscar'}
+            </button>
+          </form>
+        </div>
       </div>
 
       {recipes.length > 0 && (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {recipes.map((recipe) => (
-            <Card key={recipe.id} className="h-full flex flex-col">
-              <CardHeader className="p-4">
-                <div className="aspect-video relative overflow-hidden rounded-md mb-2">
-                  <img
-                    src={recipe.image}
-                    alt={recipe.title}
-                    className="object-cover w-full h-full"
-                  />
+            <div key={recipe.id} className="recipe-card hover:scale-105">
+              <div className="w-full h-48 overflow-hidden">
+                <img
+                  src={recipe.image}
+                  alt={recipe.title}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="p-4">
+                <h2 className="text-xl font-bold mb-2">{recipe.title}</h2>
+                <div className="flex justify-between text-sm mb-4">
+                  <span className="bg-secondary px-2 py-1 rounded-full">⏱️ {recipe.readyInMinutes} min</span>
+                  <span className="bg-secondary px-2 py-1 rounded-full">👥 {recipe.servings} porciones</span>
                 </div>
-                <CardTitle className="text-lg">{recipe.title}</CardTitle>
-                <CardDescription>
-                  {recipe.readyInMinutes} min | {recipe.servings} porciones
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="p-4 flex-1">
-                <div dangerouslySetInnerHTML={{ __html: recipe.summary.substring(0, 150) + '...' }} />
-              </CardContent>
-              <CardFooter className="p-4">
-                <Button
-                  variant="outline"
-                  className="w-full"
-                  onClick={() => window.open(`/receta/${recipe.id}`, '_blank')}
+                <div 
+                  className="text-sm mb-4 h-20 overflow-hidden" 
+                  dangerouslySetInnerHTML={{ __html: recipe.summary.substring(0, 150) + '...' }} 
+                />
+                <button
+                  className="btn-primary w-full"
+                  onClick={() => router.push(`/recetas/${recipe.id}`)}
                 >
                   Ver Receta Completa
-                </Button>
-              </CardFooter>
-            </Card>
+                </button>
+              </div>
+            </div>
           ))}
         </div>
       )}
 
       {recipes.length > 0 && recipes.length < totalResults && (
         <div className="mt-8 text-center">
-          <Button 
+          <button 
             onClick={() => searchRecipes(false)} 
             disabled={loading}
-            variant="outline"
+            className="btn-secondary"
           >
             {loading ? (
-              <><Loader2 className="h-4 w-4 animate-spin mr-2" /> Cargando...</>
-            ) : (
-              'Cargar más recetas'
-            )}
-          </Button>
+              <span className="flex items-center justify-center">
+                <Loader2 className="h-4 w-4 animate-spin mr-2" />
+                Cargando...
+              </span>
+            ) : 'Cargar más recetas'}
+          </button>
         </div>
       )}
 
       {recipes.length === 0 && !loading && query && (
-        <div className="text-center mt-8">
-          <p className="text-muted-foreground">No se encontraron recetas para "{query}"</p>
+        <div className="text-center py-8">
+          <p className="text-gray-500">No se encontraron recetas para "{query}"</p>
         </div>
       )}
     </div>

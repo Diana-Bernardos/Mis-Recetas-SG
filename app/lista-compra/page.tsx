@@ -160,13 +160,13 @@ export default function ListaCompraPage() {
         </div>
 
         <div className="mb-6">
-          <h2 className="text-xl font-bold mb-4">Pendientes ({itemsPendientes.length})</h2>
+          <h2 className="text-xl font-bold mb-4 text-gray-500">Pendientes ({itemsPendientes.length})</h2>
           {itemsPendientes.length === 0 ? (
             <p className="text-gray-500 italic">No hay productos pendientes</p>
           ) : (
             <ul className="space-y-2">
               {itemsPendientes.map((item) => (
-                <li key={item.id} className="flex items-center justify-between p-3 bg-muted rounded-md">
+                <li key={item.id} className="flex items-center justify-between p-3 bg-muted rounded-md text-gray-500">
                   <div className="flex items-center gap-3">
                     <button
                       onClick={() => toggleCompletado(item.id)}

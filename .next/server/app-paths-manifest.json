@@ -1,7 +1,6 @@
 {
-  "/recetas/page": "app/recetas/page.js",
+  "/recetas/[id]/page": "app/recetas/[id]/page.js",
+  "/api/gluten-free/recipe/route": "app/api/gluten-free/recipe/route.js",
   "/page": "app/page.js",
-  "/asistente/page": "app/asistente/page.js",
-  "/lista-compra/page": "app/lista-compra/page.js",
-  "/crear-receta/page": "app/crear-receta/page.js"
+  "/recetas/page": "app/recetas/page.js"
 }

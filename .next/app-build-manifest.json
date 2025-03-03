@@ -16,10 +16,10 @@
       "static/chunks/main-app.js",
       "static/chunks/app/recetas/page.js"
     ],
-    "/asistente/page": [
+    "/recetas/[id]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/asistente/page.js"
+      "static/chunks/app/recetas/[id]/page.js"
     ],
     "/lista-compra/page": [
       "static/chunks/webpack.js",

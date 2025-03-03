@@ -35,32 +35,32 @@ export default function Home() {
       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
         <div className="bg-secondary p-6 rounded-lg shadow-md">
           <Book className="h-10 w-10 mb-4 text-accent" />
-          <h2 className="text-xl font-bold mb-2">Recetas</h2>
-          <p className="mb-4">Explora y guarda tus recetas favoritas en un solo lugar.</p>
+          <h2 className="text-xl font-bold mb-2 text-gray-500">Recetas</h2>
+          <p className="mb-4 text-gray-500">Explora y guarda tus recetas favoritas en un solo lugar.</p>
           <Link href="/recetas" className="text-primary font-medium hover:underline">
             Ver recetas →
           </Link>
         </div>
         <div className="bg-secondary p-6 rounded-lg shadow-md">
           <ShoppingBag className="h-10 w-10 mb-4 text-accent" />
-          <h2 className="text-xl font-bold mb-2">Lista de compra</h2>
-          <p className="mb-4">Genera listas de compra automáticamente desde tus recetas.</p>
+          <h2 className="text-xl font-bold mb-2 text-gray-500">Lista de compra</h2>
+          <p className="mb-4 text-gray-500">Genera listas de compra automáticamente desde tus recetas.</p>
           <Link href="/lista-compra" className="text-primary font-medium hover:underline">
             Ver lista →
           </Link>
         </div>
         <div className="bg-secondary p-6 rounded-lg shadow-md">
           <Plus className="h-10 w-10 mb-4 text-accent" />
-          <h2 className="text-xl font-bold mb-2">Crear recetas</h2>
-          <p className="mb-4">Añade tus propias recetas y compártelas con la comunidad.</p>
+          <h2 className="text-xl font-bold mb-2 text-gray-500">Crear recetas</h2>
+          <p className="mb-4 text-gray-500">Añade tus propias recetas y compártelas con la comunidad.</p>
           <Link href="/crear-receta" className="text-primary font-medium hover:underline">
             Crear receta →
           </Link>
         </div>
         <div className="bg-secondary p-6 rounded-lg shadow-md">
           <ChefHat className="h-10 w-10 mb-4 text-accent" />
-          <h2 className="text-xl font-bold mb-2">Asistente IA</h2>
-          <p className="mb-4">Recibe recomendaciones personalizadas con nuestro asistente.</p>
+          <h2 className="text-xl font-bold mb-2 text-gray-500">Asistente IA</h2>
+          <p className="mb-4 text-gray-500">Recibe recomendaciones personalizadas con nuestro asistente.</p>
           <Link href="/asistente" className="text-primary font-medium hover:underline">
             Consultar →
           </Link>
@@ -68,7 +68,7 @@ export default function Home() {
       </section>
 
       <section className="bg-muted p-8 rounded-lg shadow-md mb-12">
-        <h2 className="text-2xl font-bold mb-4 text-center">Recetas destacadas</h2>
+        <h2 className="text-2xl font-bold mb-4 text-center text-gray-500">Recetas destacadas</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[1, 2, 3].map((i) => (
             <div key={i} className="recipe-card">
@@ -80,8 +80,8 @@ export default function Home() {
                 className="w-full h-48 object-cover"
               />
               <div className="p-4">
-                <h3 className="text-lg font-bold mb-2">Receta de ejemplo {i}</h3>
-                <p className="text-sm mb-4">Una deliciosa receta que puedes preparar en menos de 30 minutos.</p>
+                <h3 className="text-lg font-bold mb-2 text-gray-500">Receta de ejemplo {i}</h3>
+                <p className="text-sm mb-4 text-gray-500">Una deliciosa receta que puedes preparar en menos de 30 minutos.</p>
                 <Link href={`/recetas/${i}`} className="text-primary font-medium hover:underline">
                   Ver receta →
                 </Link>
