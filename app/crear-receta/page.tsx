@@ -1,8 +1,6 @@
 "use client"
 
-import type React from "react"
-
-import { useState } from "react"
+import React, { useState, createRef } from "react"
 import { Plus, Minus, Upload } from "lucide-react"
 import { useRouter } from "next/navigation"
 
@@ -18,8 +16,11 @@ export default function CrearRecetaPage() {
     ingredientes: [{ nombre: "", cantidad: "" }],
     pasos: [""],
   })
+  const [imageFile, setImageFile] = useState<File | null>(null)
+  const [imagePreview, setImagePreview] = useState<string | null>(null)
   const [guardando, setGuardando] = useState(false)
   const [error, setError] = useState("")
+  const fileInputRef = createRef<HTMLInputElement>()
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target
@@ -64,6 +65,24 @@ export default function CrearRecetaPage() {
     setReceta({ ...receta, pasos: nuevosPasos })
   }
 
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      const file = e.target.files[0]
+      setImageFile(file)
+      
+      // Crear vista previa
+      const reader = new FileReader()
+      reader.onloadend = () => {
+        setImagePreview(reader.result as string)
+      }
+      reader.readAsDataURL(file)
+    }
+  }
+
+  const handleImageClick = () => {
+    fileInputRef.current?.click()
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
@@ -87,25 +106,37 @@ export default function CrearRecetaPage() {
       setGuardando(true)
       setError("")
 
+      // Crear un FormData para enviar la imagen junto con los datos
+      const formData = new FormData()
+      formData.append("title", receta.titulo)
+      formData.append("description", receta.descripcion)
+      formData.append("time", receta.tiempo)
+      formData.append("difficulty", receta.dificultad)
+      formData.append("servings", receta.porciones.toString())
+      
+      // Si hay una URL de imagen y no hay archivo, usar la URL
+      if (receta.imagen && !imageFile) {
+        formData.append("image_url", receta.imagen)
+      }
+      
+      // Si hay un archivo de imagen, enviarlo
+      if (imageFile) {
+        formData.append("image", imageFile)
+      }
+      
+      // Convertir los ingredientes y pasos a JSON
+      formData.append("ingredients", JSON.stringify(
+        receta.ingredientes.map(ing => ({
+          name: ing.nombre,
+          quantity: ing.cantidad
+        }))
+      ))
+      formData.append("steps", JSON.stringify(receta.pasos))
+      formData.append("gluten_free", "true")
+
       const response = await fetch("/api/recipes", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          title: receta.titulo,
-          description: receta.descripcion,
-          time: receta.tiempo,
-          difficulty: receta.dificultad,
-          servings: receta.porciones,
-          image_url: receta.imagen || null,
-          ingredients: receta.ingredientes.map((ing) => ({
-            name: ing.nombre,
-            quantity: ing.cantidad,
-          })),
-          steps: receta.pasos,
-          gluten_free: true, // Aseguramos que todas las recetas sean sin gluten
-        }),
+        body: formData,
       })
 
       if (!response.ok) {
@@ -145,19 +176,41 @@ export default function CrearRecetaPage() {
 
           <div>
             <label className="block text-sm font-medium mb-2">Imagen</label>
-            <div className="flex items-center gap-2">
-              <input
-                type="text"
-                name="imagen"
-                value={receta.imagen}
-                onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary focus:border-primary text-gray-600"
-                placeholder="URL de la imagen"
-              />
-              <button type="button" className="btn-accent flex items-center gap-2">
-                <Upload className="h-4 w-4" />
-                Subir
-              </button>
+            <div className="flex flex-col">
+              <div className="flex items-center gap-2 mb-2">
+                <input
+                  type="text"
+                  name="imagen"
+                  value={receta.imagen}
+                  onChange={handleChange}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary focus:border-primary text-gray-600"
+                  placeholder="URL de la imagen (o sube una)"
+                />
+                <button 
+                  type="button" 
+                  onClick={handleImageClick} 
+                  className="btn-accent flex items-center gap-2"
+                >
+                  <Upload className="h-4 w-4" />
+                  Subir
+                </button>
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  accept="image/*"
+                  onChange={handleImageChange}
+                  style={{ display: 'none' }}
+                />
+              </div>
+              {imagePreview && (
+                <div className="mt-2 relative w-full max-w-xs">
+                  <img 
+                    src={imagePreview} 
+                    alt="Vista previa" 
+                    className="h-40 w-full object-cover rounded-md border border-gray-300" 
+                  />
+                </div>
+              )}
             </div>
           </div>
 
@@ -293,4 +346,3 @@ export default function CrearRecetaPage() {
     </div>
   )
 }
-

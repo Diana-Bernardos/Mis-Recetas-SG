@@ -1,6 +1,14 @@
 {
-  "/recetas/[id]/page": "app/recetas/[id]/page.js",
-  "/api/gluten-free/recipe/route": "app/api/gluten-free/recipe/route.js",
+  "/recetas/page": "app/recetas/page.js",
   "/page": "app/page.js",
-  "/recetas/page": "app/recetas/page.js"
+  "/recetas/[id]/page": "app/recetas/[id]/page.js",
+  "/recetas/editar/[id]/page": "app/recetas/editar/[id]/page.js",
+  "/asistente/page": "app/asistente/page.js",
+  "/api/recipes/route": "app/api/recipes/route.js",
+  "/api/recipes/[id]/route": "app/api/recipes/[id]/route.js",
+  "/api/gluten-free/route": "app/api/gluten-free/route.js",
+  "/api/gluten-free/recipe/route": "app/api/gluten-free/recipe/route.js",
+  "/lista-compra/page": "app/lista-compra/page.js",
+  "/api/shopping-list/route": "app/api/shopping-list/route.js",
+  "/crear-receta/page": "app/crear-receta/page.js"
 }

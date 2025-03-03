@@ -21,15 +21,25 @@
       "static/chunks/main-app.js",
       "static/chunks/app/recetas/[id]/page.js"
     ],
-    "/lista-compra/page": [
+    "/recetas/editar/[id]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/lista-compra/page.js"
+      "static/chunks/app/recetas/editar/[id]/page.js"
+    ],
+    "/asistente/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/asistente/page.js"
     ],
     "/crear-receta/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/crear-receta/page.js"
+    ],
+    "/lista-compra/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/lista-compra/page.js"
     ]
   }
 }

@@ -83,8 +83,8 @@ export default function RecetasPage() {
           {error && <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">{error}</div>}
 
           <div className="mb-8">
-            <div className="relative max-w-md mx-auto md:mx-0">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            <div className="relative max-w-md mx-auto md:mx-0 ">
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none ">
                 <Search className="h-5 w-5 text-gray-400" />
               </div>
               <input
@@ -98,14 +98,14 @@ export default function RecetasPage() {
           </div>
 
           {recetasFiltradas.length === 0 ? (
-            <div className="text-center py-8">
+            <div className="text-center py-8 ">
               <p className="text-gray-500 mb-4">No se encontraron recetas sin gluten</p>
               <Link href="/crear-receta" className="btn-primary">
                 Crear nueva receta sin gluten
               </Link>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-gray-500">
               {recetasFiltradas.map((receta) => (
                 <Link key={receta.id} href={`/recetas/${receta.id}`} className="recipe-card hover:scale-105">
                   <Image
@@ -113,14 +113,14 @@ export default function RecetasPage() {
                     alt={receta.title}
                     width={300}
                     height={200}
-                    className="w-full h-48 object-cover"
+                    className="w-full h-48 object-cover  "
                   />
                   <div className="p-4">
-                    <h2 className="text-xl font-bold mb-2">{receta.title}</h2>
-                    <p className="text-sm mb-4">{receta.description}</p>
+                    <h2 className="text-xl font-bold mb-2 text-gray-500">{receta.title}</h2>
+                    <p className="text-sm mb-4 ">{receta.description}</p>
                     <div className="flex justify-between text-sm">
-                      <span className="bg-secondary px-2 py-1 rounded-full">⏱️ {receta.time}</span>
-                      <span className="bg-secondary px-2 py-1 rounded-full">
+                      <span className="bg-secondary px-2 py-1 rounded-full text-gray-600">⏱️ {receta.time}</span>
+                      <span className="bg-secondary px-2 py-1 rounded-full text-gray-500">
                         {receta.difficulty === "Fácil" && "🟢"}
                         {receta.difficulty === "Media" && "🟠"}
                         {receta.difficulty === "Difícil" && "🔴"}

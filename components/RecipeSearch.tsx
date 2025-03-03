@@ -69,13 +69,13 @@ export default function RecipeSearch() {
                 placeholder="Buscar recetas sin gluten..."
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:ring-primary focus:border-primary"
+                className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:ring-primary focus:border-primary text-gray-500"
               />
             </div>
             <button 
               type="submit" 
               disabled={loading}
-              className="ml-2 btn-primary"
+              className="ml-2 btn-primary "
             >
               {loading ? (
                 <span className="flex items-center justify-center">
@@ -89,28 +89,28 @@ export default function RecipeSearch() {
       </div>
 
       {recipes.length > 0 && (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-gray-500">
           {recipes.map((recipe) => (
-            <div key={recipe.id} className="recipe-card hover:scale-105">
-              <div className="w-full h-48 overflow-hidden">
+            <div key={recipe.id} className="recipe-card hover:scale-105 text-gray-500">
+              <div className="w-full h-48 overflow-hidden text-gray-500">
                 <img
                   src={recipe.image}
                   alt={recipe.title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover text-gray-500 "
                 />
               </div>
               <div className="p-4">
-                <h2 className="text-xl font-bold mb-2">{recipe.title}</h2>
-                <div className="flex justify-between text-sm mb-4">
+                <h2 className="text-xl font-bold mb-2 ">{recipe.title}</h2>
+                <div className="flex justify-between text-sm mb-4 ">
                   <span className="bg-secondary px-2 py-1 rounded-full">⏱️ {recipe.readyInMinutes} min</span>
                   <span className="bg-secondary px-2 py-1 rounded-full">👥 {recipe.servings} porciones</span>
                 </div>
                 <div 
-                  className="text-sm mb-4 h-20 overflow-hidden" 
+                  className="text-sm mb-4 h-20 overflow-hidden text-gray-500" 
                   dangerouslySetInnerHTML={{ __html: recipe.summary.substring(0, 150) + '...' }} 
                 />
                 <button
-                  className="btn-primary w-full"
+                  className="btn-primary w-full text-gray-500"
                   onClick={() => router.push(`/recetas/${recipe.id}`)}
                 >
                   Ver Receta Completa
@@ -126,7 +126,7 @@ export default function RecipeSearch() {
           <button 
             onClick={() => searchRecipes(false)} 
             disabled={loading}
-            className="btn-secondary"
+            className="btn-secondary "
           >
             {loading ? (
               <span className="flex items-center justify-center">

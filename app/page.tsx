@@ -23,7 +23,7 @@ export default function Home() {
         </div>
         <div className="md:w-1/2">
           <Image
-            src="/placeholder.svg?height=400&width=600"
+            src="/placeholder.png?height=400&width=600"
             alt="Recetario App"
             width={600}
             height={400}
@@ -73,7 +73,7 @@ export default function Home() {
           {[1, 2, 3].map((i) => (
             <div key={i} className="recipe-card">
               <Image
-                src={`/placeholder.svg?height=200&width=300&text=Receta${i}`}
+                src={`/pan-de-molde.png?height=200&width=300&text=Receta${i}`}
                 alt={`Receta ${i}`}
                 width={300}
                 height={200}
