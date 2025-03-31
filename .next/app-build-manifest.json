@@ -1,45 +1,65 @@
 {
   "pages": {
-    "/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/page.js"
-    ],
     "/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
+    "/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/page.js"
+    ],
     "/recetas/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/recetas/page.js"
     ],
-    "/recetas/[id]/page": [
+    "/lista-compra/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/recetas/[id]/page.js"
+      "static/chunks/app/lista-compra/page.js"
     ],
-    "/recetas/editar/[id]/page": [
+    "/api/shopping-list/route": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/recetas/editar/[id]/page.js"
+      "static/chunks/app/api/shopping-list/route.js"
     ],
-    "/asistente/page": [
+    "/api/recipes/route": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/asistente/page.js"
+      "static/chunks/app/api/recipes/route.js"
     ],
     "/crear-receta/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/crear-receta/page.js"
     ],
-    "/lista-compra/page": [
+    "/asistente/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/lista-compra/page.js"
+      "static/chunks/app/asistente/page.js"
+    ],
+    "/recetas/loading": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/recetas/loading.js"
+    ],
+    "/recetas/[id]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/recetas/[id]/page.js"
+    ],
+    "/api/recipes/[id]/route": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/api/recipes/[id]/route.js"
+    ],
+    "/api/gluten-free/recipe/route": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/api/gluten-free/recipe/route.js"
     ]
   }
 }

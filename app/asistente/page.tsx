@@ -1,7 +1,8 @@
 "use client"
 
-import React, { useState, useRef, useEffect } from "react"
-import { Send, Bot, User, Loader2 } from 'lucide-react'
+import type React from "react"
+import { useState, useRef, useEffect } from "react"
+import { Send, Bot, User, Loader2 } from "lucide-react"
 
 type Mensaje = {
   id: number
@@ -25,7 +26,7 @@ export default function AsistentePage() {
 
   useEffect(() => {
     mensajesFinRef.current?.scrollIntoView({ behavior: "smooth" })
-  }, [])
+  }, [mensajes, cargando])
 
   const enviarMensaje = async () => {
     if (inputMensaje.trim() === "") return
@@ -88,34 +89,32 @@ export default function AsistentePage() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-6 flex items-center gap-2 ">
-        <Bot className="h-8 w-8 " />
+      <h1 className="text-3xl font-bold mb-6 flex items-center gap-2 text-primary">
+        <Bot className="h-8 w-8" />
         Asistente de Cocina IA
       </h1>
 
       <div className="bg-secondary rounded-lg shadow-md overflow-hidden flex flex-col h-[70vh]">
-        <div className="flex-grow overflow-y-auto p-4 text-gray-500">
+        <div className="flex-grow overflow-y-auto p-4">
           {mensajes.map((mensaje) => (
             <div key={mensaje.id} className={`mb-4 flex ${mensaje.esUsuario ? "justify-end" : "justify-start"}`}>
-              <div
-                className={`max-w-[80%] rounded-lg p-3 ${
-                  mensaje.esUsuario ? "bg-primary text-primary-foreground" : "bg-muted"
-                }`}
-              >
-                <div className="flex items-center gap-2 mb-1 ">
+              <div className={`max-w-[80%] rounded-lg p-3 ${mensaje.esUsuario ? "bg-primary text-white" : "bg-muted"}`}>
+                <div className="flex items-center gap-2 mb-1">
                   {mensaje.esUsuario ? (
                     <>
-                      <span className="font-medium ">Tú</span>
-                      <User className="h-4 w-4" />
+                      <span className="font-medium text-white">Tú</span>
+                      <User className="h-4 w-4 text-white" />
                     </>
                   ) : (
                     <>
-                      <Bot className="h-4 w-4" />
-                      <span className="font-medium">Asistente</span>
+                      <Bot className="h-4 w-4 text-primary" />
+                      <span className="font-medium text-primary">Asistente</span>
                     </>
                   )}
                 </div>
-                <p className="whitespace-pre-wrap ">{mensaje.texto}</p>
+                <p className={`whitespace-pre-wrap ${mensaje.esUsuario ? "text-white" : "text-primary"}`}>
+                  {mensaje.texto}
+                </p>
               </div>
             </div>
           ))}
@@ -123,8 +122,8 @@ export default function AsistentePage() {
           {cargando && (
             <div className="mb-4 flex justify-start">
               <div className="bg-muted rounded-lg p-4 flex items-center gap-2">
-                <Loader2 className="h-4 w-4 animate-spin" />
-                <span>El asistente está escribiendo...</span>
+                <Loader2 className="h-4 w-4 animate-spin text-primary" />
+                <span className="text-primary">El asistente está escribiendo...</span>
               </div>
             </div>
           )}
@@ -139,7 +138,7 @@ export default function AsistentePage() {
               onChange={(e) => setInputMensaje(e.target.value)}
               onKeyPress={handleKeyPress}
               placeholder="Escribe tu mensaje..."
-              className="flex-grow px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary focus:border-primary resize-none text-gray-500"
+              className="flex-grow px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary focus:border-primary resize-none text-foreground"
               rows={2}
             ></textarea>
             <button
@@ -151,7 +150,7 @@ export default function AsistentePage() {
               Enviar
             </button>
           </div>
-          <p className="text-xs text-gray-500 mt-2">Asistente impulsado por Llama3.2:3b-instruct-q8_0</p>
+          <p className="text-xs text-primary/70 mt-2">Asistente impulsado por Llama3.2:3b-instruct-q8_0</p>
         </div>
       </div>
     </div>

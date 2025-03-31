@@ -14,29 +14,38 @@ export default function Navbar() {
           <div className="flex items-center">
             <Link href="/" className="flex items-center gap-2">
               <ShoppingBag className="h-6 w-6" />
-              <span className="font-bold text-xl">Recetario Sin Gluten</span>
+              <span className="font-bold text-xl text-white">Recetario Sin Gluten</span>
             </Link>
           </div>
 
           {/* Desktop menu */}
           <div className="hidden md:flex items-center space-x-4">
-            <Link href="/" className="flex items-center gap-1 px-3 py-2 rounded-md hover:bg-primary/80">
+            <Link href="/" className="nav-link flex items-center gap-1 px-3 py-2 rounded-md hover:bg-primary/80">
               <Home className="h-4 w-4" />
               <span>Inicio</span>
             </Link>
-            <Link href="/recetas" className="flex items-center gap-1 px-3 py-2 rounded-md hover:bg-primary/80">
+            <Link href="/recetas" className="nav-link flex items-center gap-1 px-3 py-2 rounded-md hover:bg-primary/80">
               <Book className="h-4 w-4" />
               <span>Recetas</span>
             </Link>
-            <Link href="/lista-compra" className="flex items-center gap-1 px-3 py-2 rounded-md hover:bg-primary/80">
+            <Link
+              href="/lista-compra"
+              className="nav-link flex items-center gap-1 px-3 py-2 rounded-md hover:bg-primary/80"
+            >
               <ShoppingBag className="h-4 w-4" />
               <span>Lista de Compra</span>
             </Link>
-            <Link href="/crear-receta" className="flex items-center gap-1 px-3 py-2 rounded-md hover:bg-primary/80">
+            <Link
+              href="/crear-receta"
+              className="nav-link flex items-center gap-1 px-3 py-2 rounded-md hover:bg-primary/80"
+            >
               <Plus className="h-4 w-4" />
               <span>Crear Receta</span>
             </Link>
-            <Link href="/asistente" className="flex items-center gap-1 px-3 py-2 rounded-md hover:bg-primary/80">
+            <Link
+              href="/asistente"
+              className="nav-link flex items-center gap-1 px-3 py-2 rounded-md hover:bg-primary/80"
+            >
               <ChefHat className="h-4 w-4" />
               <span>Asistente IA</span>
             </Link>
@@ -49,7 +58,7 @@ export default function Navbar() {
               className="inline-flex items-center justify-center p-2 rounded-md hover:bg-primary/80 focus:outline-none"
             >
               <svg
-                className="h-6 w-6"
+                className="h-6 w-6 text-white"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -72,7 +81,7 @@ export default function Navbar() {
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             <Link
               href="/"
-              className="flex items-center gap-1 block px-3 py-2 rounded-md hover:bg-primary/80"
+              className="nav-link flex items-center gap-1 block px-3 py-2 rounded-md hover:bg-primary/80"
               onClick={() => setIsOpen(false)}
             >
               <Home className="h-4 w-4" />
@@ -80,7 +89,7 @@ export default function Navbar() {
             </Link>
             <Link
               href="/recetas"
-              className="flex items-center gap-1 block px-3 py-2 rounded-md hover:bg-primary/80"
+              className="nav-link flex items-center gap-1 block px-3 py-2 rounded-md hover:bg-primary/80"
               onClick={() => setIsOpen(false)}
             >
               <Book className="h-4 w-4" />
@@ -88,7 +97,7 @@ export default function Navbar() {
             </Link>
             <Link
               href="/lista-compra"
-              className="flex items-center gap-1 block px-3 py-2 rounded-md hover:bg-primary/80"
+              className="nav-link flex items-center gap-1 block px-3 py-2 rounded-md hover:bg-primary/80"
               onClick={() => setIsOpen(false)}
             >
               <ShoppingBag className="h-4 w-4" />
@@ -96,7 +105,7 @@ export default function Navbar() {
             </Link>
             <Link
               href="/crear-receta"
-              className="flex items-center gap-1 block px-3 py-2 rounded-md hover:bg-primary/80"
+              className="nav-link flex items-center gap-1 block px-3 py-2 rounded-md hover:bg-primary/80"
               onClick={() => setIsOpen(false)}
             >
               <Plus className="h-4 w-4" />
@@ -104,7 +113,7 @@ export default function Navbar() {
             </Link>
             <Link
               href="/asistente"
-              className="flex items-center gap-1 block px-3 py-2 rounded-md hover:bg-primary/80"
+              className="nav-link flex items-center gap-1 block px-3 py-2 rounded-md hover:bg-primary/80"
               onClick={() => setIsOpen(false)}
             >
               <ChefHat className="h-4 w-4" />

@@ -2,38 +2,71 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Resto de tu CSS aquí */
-
 :root {
-  --background: 43 36% 74%;
-  --foreground: 20 10% 98%;
-  --primary: 165 15% 75%;
+  --background: 0 0% 100%;
+  --foreground: 240 29% 10%;
+
+  --primary: 240 29% 10%;
   --primary-foreground: 0 0% 100%;
-  --secondary: 43 60% 85%;
-  --secondary-foreground: 20 10% 20%;
-  --accent: 36 50% 82%;
-  --accent-foreground: 20 10% 20%;
-  --muted: 30 30% 88%;
-  --muted-foreground: 20 10% 40%;
-  --card: 43 36% 95%;
-  --card-foreground: 20 10% 20%;
-  --border: 20 15% 85%;
-  --input: 20 15% 85%;
+
+  --secondary: 240 12% 50%;
+  --secondary-foreground: 0 0% 100%;
+
+  --accent: 0 38% 85%;
+  --accent-foreground: 240 29% 10%;
+
+  --muted: 0 33% 92%;
+  --muted-foreground: 240 12% 30%;
+
+  --card: 0 40% 98%;
+  --card-foreground: 240 29% 10%;
+
+  --border: 240 12% 90%;
+  --input: 240 12% 90%;
+
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 98%;
-  --ring: 20 14.3% 4.1%;
+
+  --ring: 240 29% 10%;
+
   --radius: 0.5rem;
 }
 
+body {
+  @apply bg-background text-foreground;
+}
+
 @layer base {
-  body {
-    @apply bg-background text-foreground;
+  * {
+    @apply border-border;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-primary font-bold;
+  }
+
+  a {
+    @apply text-primary hover:text-primary/80 transition-colors;
   }
 }
 
 @layer components {
   .recipe-card {
     @apply bg-card rounded-lg shadow-md overflow-hidden transition-all hover:shadow-lg;
+  }
+
+  .recipe-card h2,
+  .recipe-card h3 {
+    @apply text-primary;
+  }
+
+  .recipe-card p {
+    @apply text-foreground;
   }
 
   .btn-primary {
@@ -47,4 +80,34 @@
   .btn-accent {
     @apply bg-accent text-accent-foreground px-4 py-2 rounded-md hover:bg-accent/90 transition-colors;
   }
+
+  /* Mejoras de contraste para navegación */
+  .nav-link {
+    @apply text-primary-foreground font-medium hover:text-white/90 transition-colors;
+  }
+
+  /* Mejoras para textos sobre fondos claros */
+  .bg-muted *,
+  .bg-card *,
+  .bg-accent * {
+    @apply text-primary;
+  }
+
+  /* Excepción para textos secundarios */
+  .text-secondary {
+    @apply text-secondary;
+  }
+
+  /* Asegurar contraste en formularios */
+  input,
+  textarea,
+  select {
+    @apply text-foreground bg-background;
+  }
+
+  /* Mejorar contraste en elementos completados */
+  .completed-item {
+    @apply text-secondary/70;
+  }
 }
+
